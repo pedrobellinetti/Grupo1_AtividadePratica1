@@ -65,17 +65,17 @@ def minimax(tabuleiro, bot, jogador):
         
         return melhor
             
-                else:
-                    melhor = 100
-                    for i in range(3):
-                        for j in range(3):
-                            if tabuleiro[i][j] == " ":   
-                                tabuleiro[i][j] = jogador
-                                score = minimax(tabuleiro, bot, jogador, True)
-                                tabuleiro[i][j] = " "
-                                melhor = min(melhor, score)
+    else:
+        melhor = 100
+        for i in range(3):
+            for j in range(3):
+                if tabuleiro[i][j] == " ":   
+                    tabuleiro[i][j] = jogador
+                    score = minimax(tabuleiro, bot, jogador, True)
+                    tabuleiro[i][j] = " "
+                    melhor = min(melhor, score)
 
-                    return melhor
+        return melhor
 
 def start_jogo():
     
