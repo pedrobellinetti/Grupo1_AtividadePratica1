@@ -9,7 +9,7 @@ def mostra_tabuleiro(tabuleiro):
     for linha in tabuleiro:
         print(f"|{linha[0]}|{linha[1]}|{linha[2]}|")
         
-        print("-------------")
+    print("-------------")
 
 def verifica_vitoria(tabuleiro, jogador):
     """
@@ -168,8 +168,7 @@ def start_jogo():
         Escolha qual simbolo deseja representar:
         1. X
         2. O
-        :
-        """))
+        : """))
         if jogador == 1:
             jogador = simbolos[0] # Símbolo do jogador = "X"
             bot = simbolos[1] # Símbolo do bot = "O"
@@ -182,6 +181,8 @@ def start_jogo():
             print("Escolha inválida, tente novamente.") # Retorna até o jogador sair do terminal ou fizer uma escolha válida
     
     mostra_tabuleiro(tabuleiro)
+
+    turno_atual = "X" # X Sempre começa
     
     # No máximo 9 jogadas possíveis, pois é uma matriz 3x3
     for i in range(9):
@@ -189,7 +190,7 @@ def start_jogo():
         if turno_atual == jogador:
             while True:
                 linha = int(input("Escolha uma linha: (1-3): ")) -1 # Pois os índices começam em 0
-                coluna = int(input("Escolha uma coluna: (1-3)")) -1
+                coluna = int(input("Escolha uma coluna: (1-3): ")) -1
 
                 # Valida se linha e coluna estão dentro do intervalo permitidos
                 if 0 <= linha <=2 and 0 <= coluna <= 2 and tabuleiro[linha][coluna] == " ":
@@ -198,8 +199,9 @@ def start_jogo():
                 # Verifica se a casa está vazia ou não
                 else:
                     print("Posição inválida ou ocupada. Tente novamente.")
-
-                    mostra_tabuleiro() # Mostra o estado atual para que a escolha possa ser feita
+                    
+            mostra_tabuleiro(tabuleiro) # Mostra o estado atual para que a escolha possa ser feita
+        
         else: 
             print("\nVez do bot...")
             melhor_jogada(tabuleiro, bot, jogador)
