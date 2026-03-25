@@ -45,6 +45,7 @@ def verifica_termino(tabuleiro, jogador, bot):
     return False
 
 def minimax(tabuleiro, bot, jogador):
+    return
 
 def start_jogo():
     
