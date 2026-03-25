@@ -44,7 +44,7 @@ def verifica_termino(tabuleiro, jogador, bot):
         return True
     return False
 
-def minimax(tabuleiro, bot, jogador):
+def minimax(tabuleiro, bot, jogador, vez_do_bot):
     if verifica_vitoria(tabuleiro, bot):
         return 1
     if verifica_vitoria(tabuleiro, jogador):
@@ -76,6 +76,24 @@ def minimax(tabuleiro, bot, jogador):
                     melhor = min(melhor, score)
 
         return melhor
+
+
+def melhor_jogada(tabuleiro, bot, jogador, vez_do_bot):
+    melhor_score = -100 # Valor aleatório com um resultado ruim
+    jogada = (-1, -1)
+
+    for i in range(3):
+        for j in range(3):
+            if tabuleiro[i][j] == " ":
+                tabuleiro[i][j] = bot
+                score = minimax(tabuleiro, bot, jogador, False)
+                tabuleiro[i][j] = " "
+                if score > melhor_score:
+                    melhor_score = score
+                    jogada = (i,j)
+
+    tabuleiro[jogada[0]][jogada[1]] = bot
+    mostra_tabuleiro(tabuleiro)
 
 def start_jogo():
     
