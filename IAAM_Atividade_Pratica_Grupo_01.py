@@ -199,35 +199,35 @@ def start_jogo():
                 # Verifica se a casa está vazia ou não
                 else:
                     print("Posição inválida ou ocupada. Tente novamente.")
-                    
-            mostra_tabuleiro(tabuleiro) # Mostra o estado atual para que a escolha possa ser feita
         
         else: 
             print("\nVez do bot...")
             melhor_jogada(tabuleiro, bot, jogador)
 
-            # Verificar após o bot jogar
+        mostra_tabuleiro(tabuleiro) # Mostra o estado atual para que a escolha possa ser feita
 
-            # Checar se a última jogada já pode ter sido vencedora
-            if verifica_vitoria(tabuleiro, jogador):
-                print("Jogador venceu!!")
-                return
+        # Verificar após o bot jogar
+
+        # Checar se a última jogada já pode ter sido vencedora
+        if verifica_vitoria(tabuleiro, jogador):
+            print("Jogador venceu!!")
+            return
             
-            if verifica_vitoria(tabuleiro, bot):
-                print("Bot venceu!!")
-                return
+        if verifica_vitoria(tabuleiro, bot):
+            print("Bot venceu!!")
+            return
             
-            # Checar se houve empate
-            if verifica_empate(tabuleiro):
-                print("O jogo terminou empatado")
-                return
+        # Checar se houve empate
+        if verifica_empate(tabuleiro):
+            print("O jogo terminou empatado")
+            return
 
-            # Alternância de turnos
+        # Alternância de turnos
 
-            if turno_atual == "X":
-                turno_atual = "O"
-            else: 
-                turno_atual = "X"
+        if turno_atual == "X":
+            turno_atual = "O"
+        else: 
+            turno_atual = "X"
 
 # Inicia o jogo
 start_jogo()
